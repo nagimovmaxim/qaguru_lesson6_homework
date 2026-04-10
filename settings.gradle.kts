@@ -1,0 +1,1 @@
+rootProject.name = "qaguru_lesson6_homework"
