@@ -1,7 +1,9 @@
 package testData;
 
-import testUtils.Creator;
 
+import testUtils.Rando;
+
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Set;
@@ -15,22 +17,27 @@ public class PracticeFormTestData {
 
 
     public PracticeFormTestData() throws Exception {
-        userEmailIncorrect = "qwert";
-        userNumberIncorrect = "qwert";
+        userEmailIncorrect = Rando.getNumericString(10);
+        userNumberIncorrect = Rando.getLetterString(10);
 
         numFieldsForShortSubmit.addAll(Set.of(1, 3, 4));
 
-        correctFormData.put("Student Name", Creator.getRandomLetterString(10) + " " + Creator.getRandomLetterString(10));
-        correctFormData.put("Student Email", Creator.getRandomLetterString(10) + "@" + Creator.getRandomLetterString(5) + ".com");
-        correctFormData.put("Gender", "Other");
-        correctFormData.put("Mobile", Creator.getRandomNumericString(10));
-        correctFormData.put("Date of Birth", "31 December,1999");
-        correctFormData.put("Subjects", "Maths");
-        correctFormData.put("Hobbies", "Reading");
+        correctFormData.put("Student Name", Rando.getFullName());
+        correctFormData.put("Student Email", Rando.getEmail());
+        correctFormData.put("Gender", Rando.getOneOf("Male", "Female", "Other"));
+        correctFormData.put("Mobile", Rando.getNumericString(10));
+        correctFormData.put("Date of Birth", Rando.getDateByFormat("d MMMM,yyyy", 1950, 2000));
+        correctFormData.put("Subjects", Rando.getOneOf("Maths", "Accounting", "Arts", "Social Studies", "Biology"
+                , "Physics", "Chemistry", "Computer Science", "Commerce", "Economics", "Civics", "Hindi", "English", "History"));
+        correctFormData.put("Hobbies", Rando.getOneOf("Reading", "Music", "Sports"));
         correctFormData.put("Picture", "images.jpg");
-        correctFormData.put("Address", Creator.getRandomLetterString(50));
-        correctFormData.put("State and City", "NCR Delhi");
-
+        correctFormData.put("Address", Rando.getAddress());
+        correctFormData.put("State and City", Rando.getOneOf(new HashMap<>() {{
+            put("NCR", new String[]{"Delhi", "Gurgaon", "Noida"});
+            put("Uttar Pradesh", new String[]{"Agra", "Lucknow", "Merrut"});
+            put("Haryana", new String[]{"Karnal", "Panipat"});
+            put("Rajasthan", new String[]{"Jaipur", "Jaiselmer"});
+        }}));
         errorMarkers.put("firstName", "border-color;rgb(220, 53, 69)");
         errorMarkers.put("lastName", "border-color;rgb(220, 53, 69)");
         errorMarkers.put("maleRadioBorder", "border-color;rgb(220, 53, 69)");

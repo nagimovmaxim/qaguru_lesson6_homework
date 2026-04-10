@@ -11,8 +11,7 @@ import java.util.Set;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormPage {
     private final String pageUrl = "/automation-practice-form";
@@ -37,6 +36,11 @@ public class PracticeFormPage {
 
     public PracticeFormPage openPage() {
         open(this.pageUrl);
+        return this;
+    }
+
+    public PracticeFormPage removeFooter() {
+        executeJavaScript("document.querySelector('footer').remove()");
         return this;
     }
 

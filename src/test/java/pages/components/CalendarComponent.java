@@ -3,7 +3,7 @@ package pages.components;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byClassName;
-import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
 public class CalendarComponent {
@@ -14,7 +14,6 @@ public class CalendarComponent {
     public void set(String year, String month, String day) {
         yearSelect.selectOption(year);
         monthSelect.selectOption(month);
-        dayDiv.$(byText(day)).click();
-//        div.react-datepicker__day.react-datepicker__day--029.react-datepicker__day--weekend.react-datepicker__day--outside-month
+        dayDiv.$(byXpath(".//*[contains(text(),'" + day + "')][not(contains(@class, 'react-datepicker__day--outside-month'))]")).click();
     }
 }

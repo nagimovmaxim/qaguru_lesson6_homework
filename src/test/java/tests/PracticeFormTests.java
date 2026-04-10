@@ -20,6 +20,7 @@ public class PracticeFormTests extends TestBase {
     @Description("Негативная проверка на неправильное заполенние телефона")
     void negativePhoneErrorPracticeFormTest() {
         practiceFormPage.openPage()
+                .removeFooter()
                 .setFirstName(testData.getFirstName())
                 .setLastName(testData.getLastName())
                 .clickGender(testData.getGender())
@@ -32,6 +33,7 @@ public class PracticeFormTests extends TestBase {
     @Description("Негативная проверка на неправильное заполнение почты")
     void negativeMailErrorPracticeFormTest() {
         practiceFormPage.openPage()
+                .removeFooter()
                 .setFirstName(testData.getFirstName())
                 .setLastName(testData.getLastName())
                 .clickGender(testData.getGender())
@@ -45,6 +47,7 @@ public class PracticeFormTests extends TestBase {
     @Description("Негативная проверка на незаполнение всех обязательных полей")
     void negativeShortSubmitPracticeFormTest() {
         practiceFormPage.openPage()
+                .removeFooter()
                 .clickSubmit()
                 .checkFirstNameOnEmptyData(testData.getFirstNameErrorMarker())
                 .checkLastNameOnEmptyData(testData.getLastNameErrorMarker())
@@ -61,6 +64,7 @@ public class PracticeFormTests extends TestBase {
     @Description("Позитивно проверяются только обязательные поля формы")
     void positiveShortSubmitPracticeFormTest() {
         practiceFormPage.openPage()
+                .removeFooter()
                 .setFirstName(testData.getFirstName())
                 .setLastName(testData.getLastName())
                 .clickGender(testData.getGender())
@@ -75,6 +79,7 @@ public class PracticeFormTests extends TestBase {
     @Description("Позитивно проверяются все поля формы, а не только обязательные")
     void positiveFullSubmitPracticeFormTest() {
         practiceFormPage.openPage()
+                .removeFooter()
                 .setFirstName(testData.getFirstName())
                 .setLastName(testData.getLastName())
                 .setUserEmail(testData.getUserEmail())

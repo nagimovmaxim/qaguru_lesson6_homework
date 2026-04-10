@@ -1,6 +1,6 @@
 package testData;
 
-import testUtils.Creator;
+import testUtils.Rando;
 
 import java.util.LinkedHashMap;
 
@@ -9,11 +9,11 @@ public class TextBoxTestData {
     private LinkedHashMap<String, String> correctFormData = new LinkedHashMap<>();
 
     public TextBoxTestData() throws Exception {
-        userEmailIncorrect = "qwert";
-        correctFormData.put("name", Creator.getRandomLetterString(10));
-        correctFormData.put("email", Creator.getRandomLetterString(10) + "@" + Creator.getRandomLetterString(5) + ".com");
-        correctFormData.put("currentAddress", Creator.getRandomLetterString(50));
-        correctFormData.put("permanentAddress", Creator.getRandomLetterString(50));
+        userEmailIncorrect = Rando.getNumericString(10);
+        correctFormData.put("name", Rando.getFullName());
+        correctFormData.put("email", Rando.getEmail());
+        correctFormData.put("currentAddress", Rando.getAddress());
+        correctFormData.put("permanentAddress", Rando.getAddress());
     }
 
     public String getUserEmailIncorrect() {
