@@ -20,58 +20,46 @@ public class PracticeFormTests extends TestBase {
     @Description("Негативная проверка на неправильное заполенние телефона")
     void negativePhoneErrorPracticeFormTest() {
         practiceFormPage.openPage()
-                .removeFooter()
-                .setFirstName(testData.getFirstName())
-                .setLastName(testData.getLastName())
-                .clickGender(testData.getGender())
-                .setUserNumber(testData.getUserNumberIncorrect())
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
+                .clickGender(testData.gender)
+                .setUserNumber(testData.userNumberIncorrect)
                 .clickSubmit()
-                .checkUserNumberOnIncorrectData(testData.getUserNumberErrorMarker());
+                .checkUserNumberOnIncorrectData();
     }
 
     @Test
     @Description("Негативная проверка на неправильное заполнение почты")
     void negativeMailErrorPracticeFormTest() {
         practiceFormPage.openPage()
-                .removeFooter()
-                .setFirstName(testData.getFirstName())
-                .setLastName(testData.getLastName())
-                .clickGender(testData.getGender())
-                .setUserNumber(testData.getUserNumber())
-                .setUserEmail(testData.getUserEmailIncorrect())
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
+                .clickGender(testData.gender)
+                .setUserNumber(testData.userNumber)
+                .setUserEmail(testData.userEmailIncorrect)
                 .clickSubmit()
-                .checkUserEmailOnIncorrectData(testData.getUserEmailErrorMarker());
+                .checkUserEmailOnIncorrectData();
     }
 
     @Test
     @Description("Негативная проверка на незаполнение всех обязательных полей")
     void negativeShortSubmitPracticeFormTest() {
         practiceFormPage.openPage()
-                .removeFooter()
                 .clickSubmit()
-                .checkFirstNameOnEmptyData(testData.getFirstNameErrorMarker())
-                .checkLastNameOnEmptyData(testData.getLastNameErrorMarker())
-                .checkMaleRadioBorderOnEmptyData(testData.getMaleRadioBorderErrorMarker())
-                .checkMaleRadioOnEmptyData(testData.getMaleRadioErrorMarker())
-                .checkFemaleRadioBorderOnEmptyData(testData.getFemaleRadioBorderErrorMarker())
-                .checkFemaleRadioOnEmptyData(testData.getFemaleRadioErrorMarker())
-                .checkOtherRadioBorderOnEmptyData(testData.getOtherRadioBorderErrorMarker())
-                .checkOtherRadioOnEmptyData(testData.getOtherRadioErrorMarker())
-                .checkUserNumberOnEmptyData(testData.getUserNumberErrorMarker());
+                .checkRequiredElementsOnEmptyData();
     }
 
     @Test
     @Description("Позитивно проверяются только обязательные поля формы")
     void positiveShortSubmitPracticeFormTest() {
         practiceFormPage.openPage()
-                .removeFooter()
-                .setFirstName(testData.getFirstName())
-                .setLastName(testData.getLastName())
-                .clickGender(testData.getGender())
-                .setUserNumber(testData.getUserNumber())
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
+                .clickGender(testData.gender)
+                .setUserNumber(testData.userNumber)
                 .clickSubmit()
                 .checkResponseTableOnAppearance()
-                .checkResponseTableOnShortCorrectData(testData.getCorrectFormData(), testData.getNumFieldsForShortSubmit());
+                .checkResponseTableOnCorrectData(testData.firstName, testData.lastName, testData.gender, testData.userNumber);
 
     }
 
@@ -79,20 +67,21 @@ public class PracticeFormTests extends TestBase {
     @Description("Позитивно проверяются все поля формы, а не только обязательные")
     void positiveFullSubmitPracticeFormTest() {
         practiceFormPage.openPage()
-                .removeFooter()
-                .setFirstName(testData.getFirstName())
-                .setLastName(testData.getLastName())
-                .setUserEmail(testData.getUserEmail())
-                .clickGender(testData.getGender())
-                .setUserNumber(testData.getUserNumber())
-                .setDateOfBirth(testData.getDateOfBirth())
-                .setSubjects(testData.getSubjects())
-                .clickHobbies(testData.getHobbies())
-                .uploadPicture(testData.getPicture())
-                .setCurrentAddress(testData.getCurrentAddress())
-                .setStateAndCity(testData.getStateAndCity())
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
+                .setUserEmail(testData.userEmail)
+                .clickGender(testData.gender)
+                .setUserNumber(testData.userNumber)
+                .setDateOfBirth(testData.dateOfBirth)
+                .setSubjects(testData.subjects)
+                .clickHobbies(testData.hobbies)
+                .uploadPicture(testData.picture)
+                .setCurrentAddress(testData.address)
+                .setStateAndCity(testData.stateAndCity)
                 .clickSubmit()
                 .checkResponseTableOnAppearance()
-                .checkResponseTableOnCorrectData(testData.getCorrectFormData());
+                .checkResponseTableOnCorrectData(testData.firstName, testData.lastName, testData.userEmail, testData.gender,
+                        testData.userNumber, testData.dateOfBirth, testData.subjects, testData.hobbies,
+                        testData.picture, testData.address, testData.stateAndCity);
     }
 }

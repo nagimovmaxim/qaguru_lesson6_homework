@@ -45,6 +45,24 @@ public class Rando {
         }
     }
 
+    public static String getFirstName() throws Exception {
+        try {
+            Faker faker = new Faker();
+            return faker.name().firstName();
+        } catch (Exception e) {
+            throw new Exception(e);
+        }
+    }
+
+    public static String getLastName() throws Exception {
+        try {
+            Faker faker = new Faker();
+            return faker.name().lastName();
+        } catch (Exception e) {
+            throw new Exception(e);
+        }
+    }
+
     public static String getEmail() throws Exception {
         try {
             Faker faker = new Faker();

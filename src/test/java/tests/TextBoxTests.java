@@ -9,19 +9,19 @@ import testData.TextBoxTestData;
 
 public class TextBoxTests extends TestBase {
     TextBoxPage textBoxPage = new TextBoxPage();
-    TextBoxTestData textBoxTestData;
+    TextBoxTestData testData;
 
     @BeforeEach
     @Description("Параметризация тестовых данных")
     void parametrizationTestData() throws Exception {
-        textBoxTestData = new TextBoxTestData();
+        testData = new TextBoxTestData();
     }
 
     @Test
     @Description("Негативная проверка на неправильнео заполнение почты")
     void negativeMailErrorTextBoxTest() {
         textBoxPage.openPage()
-                .setUserEmail(textBoxTestData.getUserEmailIncorrect())
+                .setUserEmail(testData.userEmailIncorrect)
                 .submitFormClick()
                 .checkEmailOnError();
     }
@@ -30,11 +30,11 @@ public class TextBoxTests extends TestBase {
     @Description("ПОзитивная проверка заполнения всех полей")
     void successfulFullSubmitTextBoxTest() {
         textBoxPage.openPage()
-                .setUserName(textBoxTestData.getName())
-                .setUserEmail(textBoxTestData.getEmail())
-                .setCurrentAddress(textBoxTestData.getCurrentAddress())
-                .setPermanentAddress(textBoxTestData.getPermanentAddress())
+                .setUserName(testData.name)
+                .setUserEmail(testData.email)
+                .setCurrentAddress(testData.currentAddress)
+                .setPermanentAddress(testData.permanentAddress)
                 .submitFormClick()
-                .checkOutputOnCorrectData(textBoxTestData.getCorrectFormData());
+                .checkOutputOnCorrectData(testData.name, testData.email, testData.currentAddress, testData.permanentAddress);
     }
 }
