@@ -3,8 +3,7 @@ package testData;
 import testUtils.Rando;
 
 public class TextBoxTestData {
-    public String formUrl = "/text-box",
-            userEmailIncorrect,
+    public String userEmailIncorrect,
             name,
             email,
             currentAddress,

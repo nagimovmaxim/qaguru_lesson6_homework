@@ -6,8 +6,7 @@ import testUtils.Rando;
 import java.util.HashMap;
 
 public class PracticeFormTestData {
-    public String formUrl = "/automation-practice-form",
-            userEmailIncorrect,
+    public String userEmailIncorrect,
             userNumberIncorrect,
             firstName,
             lastName,
